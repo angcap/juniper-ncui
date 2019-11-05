@@ -54,7 +54,19 @@ ncsvc : Binary network connection service
 ncsvc.sh: Very simple bash script to start the VPN connection, it fetches properties defined in .ncssvcrc and use them as connection parameters. Use ./ncsvc -K top stop the VPN
 
 
-.ncsvcrc: Configuration file used by ncsvc.sh to hold connection parameters
+.ncsvcrc: Configuration file used by ncsvc.sh to hold connection parameters, escape password special characters with \ (a backslash).
+ - parameters:
+vpnhost=
+vpnrealm=
+vpnuser=
+vpnpass=
+vpncertfile=
+vpnurl=
+proxyhost=
+proxyport=
+proxyuser=
+proxypass=
+
  
 NC.jar : UI use to connect - not needed, requires several i686 libs
 
