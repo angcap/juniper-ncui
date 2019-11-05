@@ -15,20 +15,20 @@ http://kb.juniper.net/InfoCenter/index?page=content&id=KB16188
 you can get binary package file from 
 
 http://clune.org/juniper_linux.html
-
+*/
 
 VPN works on Ubuntu 19.04 if ipv6 kernel autoconfiguration /proc/sys/net/ipv6/conf/default/router_solicitations is disabled (issuing echo 0 > /proc/sys/net/ipv6/conf/default/router_solicitations as root once before starting the VPN. When the system is restarted the command needs to be reissued, alternatively the configuration can be made permanent in /etc/sysctl.conf).
 
 
-file detail : 
+File detail : 
 
-getx509certificate.sh  : get X509 authoritie from you site 
+* getx509certificate.sh  : get X509 authoritie from you site 
   sh getx509certificate.sh <YOUR HOST >  < OUTPUT FILE> 
     - if you are behind a corporate network firewall you need to set up a proxytunnel on port 443: sudo proxytunnel -p proxyhost:proxyport -P proxyuser:proxypass -d vpnhost -a 443
     - then user localhost as YOUR HOST.
     - NOTE: escape special characters in your password with backslash (es. Password$1 must be Password\$1)
 
-ncdiag : Binary file use to check ncsvc service and relate are install correctly
+* ncdiag : Binary file use to check ncsvc service and relate are install correctly
 
   usage: ./ncdiag -A [or]
     usage: ./ncdiag -i -s -d -t -h -a -r <hostname> -k -v
@@ -43,18 +43,17 @@ ncdiag : Binary file use to check ncsvc service and relate are install correctly
          -k : kill NC gui 
          -v : version 
 
-NC.jar
-ncLinuxApp.jar : zip package install files
+* ncLinuxApp.jar : zip package install files
 
-ncsvc : Binary network connection service
+* ncsvc : Binary network connection service
  To properly set permission, change the ownership to root and then give execution e suid permissions:
  - sudo chown root:root ncsvc
  - sudo chmod 6711 ncsvc
 
-ncsvc.sh: Very simple bash script to start the VPN connection, it fetches properties defined in .ncssvcrc and use them as connection parameters. Use ./ncsvc -K top stop the VPN
+* ncsvc.sh: Very simple bash script to start the VPN connection, it fetches properties defined in .ncssvcrc and use them as connection parameters. Use ./ncsvc -K top stop the VPN
 
 
-.ncsvcrc: Configuration file used by ncsvc.sh to hold connection parameters, escape password special characters with \ (a backslash).
+* .ncsvcrc: Configuration file used by ncsvc.sh to hold connection parameters, escape password special characters with \ (a backslash).
  - parameters:
 vpnhost=
 vpnrealm=
@@ -68,7 +67,7 @@ proxyuser=
 proxypass=
 
  
-NC.jar : UI use to connect - not needed, requires several i686 libs
+* NC.jar : UI use to connect - requires several i686 libs
 
 **NOTE:** from my Ubuntu 11.10 UI not load correctly but connect work fine
 
@@ -89,16 +88,10 @@ usage:
 
 1. use getx509certificate.sh to get user authoritie certificate from your site
 and save named as what you need
-2a. use ncsvc to connect your SSL-VPN device 
-./ncsvc -h < YOU HOST name or IP > -u <USER-NAME>  -p < YOUR PASSWORD> -r < YOUR_REALM> -f < YOUR_CERT_SAVE> & 
 
-2b. ./ncsvc.sh
+2. create connection properties file .ncsvcrc
+3. ./ncsvc.sh
 
-3.check with 'ncdiag' command to verify everything is ok 
-4.Joy your work! 
+4. optionally check with 'ncdiag' command to verify everything is ok 
+5. Joy your work! 
 
-
-
-
-
-*/
