@@ -1,4 +1,4 @@
-/* Juniper ncui raw package  
+/*Juniper ncui raw package  
 
 This binary not relate or work fork from Juniper network INC. 
 
@@ -89,7 +89,8 @@ usage:
 1. use getx509certificate.sh to get user authoritie certificate from your site
 and save named as what you need
 
-2. create connection properties file .ncsvcrc
+2. create connection properties file .ncsvcrc with your connection properties and the name of cert file created in step 1.
+3. set correct permission to ncsvc (see above)
 3. ./ncsvc.sh
 
 4. optionally check with 'ncdiag' command to verify everything is ok 
