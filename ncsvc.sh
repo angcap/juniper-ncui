@@ -15,10 +15,15 @@ else
    echo "unable to locate setting file $SETTINGS_FILE"
    exit -1
 fi
-if [ -z $vpnhost ];then
-	./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl -y $proxyhost -z $proxyport -s $proxyuser -a $proxypass &
-else
+
+if [ -z $proxyhost ];then
+	echo "connecting without proxy"
 	./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl &
+
+else
+	echo "connecting using proxy $proxyhost"
+	./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl -y $proxyhost -z $proxyport -s $proxyuser -a $proxypass &
+
 fi
 
 
