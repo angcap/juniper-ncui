@@ -18,11 +18,11 @@ fi
 
 if [ -z $proxyhost ];then
 	echo "connecting without proxy"
-	./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl &
+	nohup ./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl &
 
 else
 	echo "connecting using proxy $proxyhost"
-	./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl -y $proxyhost -z $proxyport -s $proxyuser -a $proxypass &
+	nohup ./ncsvc -h $vpnhost -u $vpnuser  -p $vpnpass -r $vpnrealm -f $vpncertfile -U $vpnurl -y $proxyhost -z $proxyport -s $proxyuser -a $proxypass &
 
 fi
 
